@@ -1,5 +1,7 @@
 1. Description
 
+ARRAY, BINARY SEARCH, DIVIDE AND CONQUER
+
 As the question asks, return the indices like [3,5]. If target not found, return [-1, -1]
 runtime complexity O(log n)
 
@@ -60,6 +62,37 @@ public:
 };
 
 4. Revision
+Scaning the whole array is the most straightforward method for this problem, with time complexity O(n).
+Devide and conquer is a new method for me. Normally, the time complexity of devide and conquer is O(nlog n). However, for this problem, each time we devide the array into two parts, one of the sub-array would instantly be over, so it's O(log n).
+
+Devide and conquer code:
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        int n = nums.size();
+        if(n <= 0){return {-1,-1};}
+        if(n == 1) {
+            if(nums[0] == target) {return {0,0};}
+            else {return {-1,-1};}
+        }
+        return Search(0, n-1, nums, target);    
+    }
+private:
+    vector<int> Search(int low, int high, vector<int>& nums, int target) {
+        if(nums[low] == target && target == nums[high]) {return {low, high};}
+        if(target < nums[low] || target > nums[high]) {return {-1, -1};}
+        int mid = low + (high - low) / 2;
+        vector<int> res_low = Search(low, mid, nums, target);
+        vector<int> res_high = Search(mid + 1, high, nums, target);
+        if(res_low[0] == -1) {return res_high;}
+        if(res_high[0] == -1) {return res_low;}
+        return {res_low[0], res_high[1]};
+    }  
+};
+
+Also problem #33 can be solved using devide and conquer. Because there is no duplicate, if we devide the array into two parts, the target is in the range of one of them, which means the other one can be thrown away.
 
 5. Summary
 
+Two binary search is easy to conduct. 
+Sometimes devide and conquer can be O(log n), if one sub-problem can be instantly solved.
