@@ -1,0 +1,55 @@
+1. Description
+
+Given a set of candidate numbers (candidates) (without duplicates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.
+
+The same repeated number may be chosen from candidates unlimited number of times.
+
+
+2. Instant react
+
+Knapsack problem?
+If we firstly put a number into the knapsack, the problem becomes a smaller knapsack problem.
+Dynamic programming?
+
+3. First accepted code
+
+class Solution {
+public:
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        sort(candidates.begin(), candidates.end());
+        reverse(candidates.begin(), candidates.end());
+        if(target < candidates.back()) {return {};}
+        vector<vector<int>> res;
+        Search(candidates, target, res);
+        int n = res.size();
+        reverse(res.begin(), res.end());
+        for(int i = 0; i < n; i++) {
+            reverse(res[i].begin(),res[i].end());
+        }
+        return res;
+    }
+private:
+    void Search(vector<int> candidates, int target, vector<vector<int>>& res) {
+        vector<int> res_vector = {};
+        Search_Vector(candidates, target, res_vector, res);
+    }
+    
+    void Search_Vector(vector<int> candidates, int target, vector<int> res_vector, vector<vector<int>>& res) {
+        int n = candidates.size();
+        for(int i=0; i< n; i++) {
+            if(candidates[i] < target){
+                res_vector.push_back(candidates[i]);
+                vector<int> candidates_new;
+                candidates_new.resize(n-i);
+                copy(candidates.begin()+i, candidates.end(), candidates_new.begin());
+                Search_Vector(candidates_new, target-candidates[i], res_vector, res);
+                res_vector.pop_back();
+            }
+            else if(candidates[i] == target) {
+                res_vector.push_back(candidates[i]);
+                if(find(res.begin(), res.end(), res_vector) == res.end()) {res.push_back(res_vector);}
+                res_vector.pop_back();
+            }
+        }
+    }
+};
