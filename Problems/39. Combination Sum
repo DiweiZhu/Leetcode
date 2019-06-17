@@ -53,3 +53,7 @@ private:
         }
     }
 };
+
+4. Revision
+
+The method employed is called backtracking. 
