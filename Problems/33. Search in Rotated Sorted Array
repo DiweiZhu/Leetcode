@@ -1,6 +1,6 @@
-# ##1. Description
+#1. Description
 
-A rotated sorted array is like: [4,5,6,1,2,3].
+> A rotated sorted array is like: [4,5,6,1,2,3].
 Find the target in the array and return its index. If target doesn't exist, return -1.
 Requirement: runtime complexity O(log n).
 
