@@ -1,0 +1,63 @@
+1. Description
+
+A rotated sorted array is like: [4,5,6,1,2,3].
+Find the target in the array and return its index. If target doesn't exist, return -1.
+Requirement: runtime complexity O(log n).
+
+2. Instant thoughts
+
+O(log n) so binary search.
+Maybe use the sort() function, and record the index of the smallest number.
+Maybe directly use the binary search, with the judgement condition adjusted.
+
+3. First accepted code
+
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int n = nums.size();
+        if (n <= 0) {return -1;}
+        if (n == 1) {
+            if (nums[0] == target) {return 0;}
+            return -1;
+        }
+        if (target < nums[0] && target > nums.back()) {return -1;}
+        int smallest;
+        if (nums.back() > nums[0]) {smallest = 0;}
+        else {
+            //Binary search to find the smallest number
+            int low = 0;
+            int high = n-1;
+            int mid;
+            while(low < high) {
+                mid = (low+high) / 2;
+                if(mid == 0 || nums[mid] > nums[mid + 1]) {break;}
+                if(nums[0] > nums[mid]) {high = mid;}
+                else{low = mid;}
+            }
+            smallest = mid + 1;
+        }
+        //sort the vector
+        sort(nums.begin(), nums.end());
+        //Binary search
+        int low = 0;
+        int high = n-1;
+        int mid;
+        while(low < high - 1) {
+            mid = (low+high) / 2;
+            if(nums[mid] == target) {return (mid + smallest) % n;}
+            if(nums[mid] < target) {low = mid;}
+            else{high = mid;}
+        }
+        if(target == nums[low]) {return (low + smallest) % n;}
+        if(target == nums[high]) {return (high + smallest) % n;}
+        return -1;
+    }
+};
+
+4. Revision
+
+5. Summary
+
+First of all, boundary value check should be carefully considered. In this problem, the boundary is when the input length is smaller than 3.
+For the binary search, the infinite loop should be avoided. When high-low == 1 and target>low, infinite loop happens.
