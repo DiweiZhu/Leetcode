@@ -56,8 +56,96 @@ public:
 };
 
 4. Revision
+SAME METHOD:
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int n = nums.size();
+        if (n <= 0) {return -1;}
+        if (n == 1) {
+            if (nums[0] == target) {return 0;}
+            return -1;
+        }
+        if (target < nums[0] && target > nums.back()) {return -1;}
+        int smallest;
+        if (nums.back() > nums[0]) {smallest = 0;}
+        else {
+            //Binary search to find the smallest number
+            int low = 0;
+            int high = n-1;
+            int mid;
+            while(low <= high) {
+                mid = (low+high) / 2;
+                if(nums[mid] > nums[mid + 1]) {break;}
+                if(nums[0] > nums[mid]) {high = mid - 1;}
+                else{low = mid + 1;}
+            }
+            smallest = mid + 1;
+        }
+        //sort the vector
+        sort(nums.begin(), nums.end());
+        //Binary search
+        int low = 0;
+        int high = n-1;
+        int mid;
+        while(low <= high) {
+            mid = (low+high) / 2;
+            if(nums[mid] == target) {return (mid + smallest) % n;}
+            if(nums[mid] < target) {low = mid + 1;}
+            else{high = mid - 1;}
+        }
+        return -1;
+    }
+};
+SPECIFY THE JUDGEMENT CONDITION:
+//better to seperately consider the two situations: the array is rotated or not
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int n = nums.size();
+        if (n <= 0) {return -1;}
+        if (n == 1) {
+            if (nums[0] == target) {return 0;}
+            return -1;
+        }
+        if (target < nums[0] && target > nums.back()) {return -1;}
+
+        //Binary search
+        int low = 0;
+        int high = n-1;
+        int mid;
+        while(low <= high) {
+            mid = (low+high) / 2;
+            if(target == nums[mid]) {return mid;} 
+            if(target < nums[mid]) {
+                if(target >= nums[0]) {high = mid - 1;}
+                else {
+                    if(nums[mid] >= nums[0]) {low = mid + 1;}
+                    else {high = mid - 1;}//array is rotated
+                }
+            }
+            else {
+                if(target <= nums.back()) {low = mid + 1;}
+                else {
+                    if(nums[mid] > nums.back()) {low = mid + 1;}//array is rotated
+                    else {high = mid - 1;}
+                }
+            }
+        }
+        return -1;
+    }
+};
 
 5. Summary
 
 First of all, boundary value check should be carefully considered. In this problem, the boundary is when the input length is smaller than 3.
-For the binary search, the infinite loop should be avoided. When high-low == 1 and target>low, infinite loop happens.
+
+For the binary search, the infinite loop should be avoided. When high-low == 1 and target>low, infinite loop happens. The standard binary search code is:
+int low=0, high = n-1, mid;
+while(low<=high) {
+    mid = (low+high)/2;
+    if(nums[mid]==target){return mid;}
+    if(nums[mid]<target){high = mid-1;}
+    else{low = mid + 1;}
+}
+return -1;
