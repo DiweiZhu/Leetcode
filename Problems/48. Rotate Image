@@ -1,0 +1,75 @@
+1. Description
+
+You are given an n x n 2D matrix representing an image.
+
+Rotate the image by 90 degrees (clockwise).
+
+requirement: in place, do not allocate another 2D matrix
+
+2. Instant react
+
+Is there any function for the matrix index change during the rotation? Yes there is. (x, y) -> (y, x) -> (y, n+1-x).
+Question: how to scan each element for exactly once.
+Cannot use another 2D matrix, but another 1D vector is OK.
+
+3. First accepted
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        int n = matrix.size();
+        if(n<=0){return;}
+        if(n==1){return;}
+        int tmp1, tmp2;
+        int i_tmp, j_tmp;
+        for(int i = 0; i < (n-1)/2+1; i ++) {
+            for(int j = i; j <n-1-i; j++) {
+                int count = 0;
+                tmp2 = matrix[i][j];
+                while(count < 4){
+                    i_tmp = j;
+                    j_tmp = n-i-1;
+                    
+                    tmp1 = matrix[i_tmp][j_tmp];
+                    matrix[i_tmp][j_tmp] = tmp2;
+                    tmp2 = tmp1;
+                    
+                    i = i_tmp;
+                    j = j_tmp;
+                    
+                    count ++;
+                }
+            }
+        }
+        
+        return;
+    }
+};
+
+4.Revision
+
+Devide and conquer? No. Basic idea of devide and conquer is that the solution of the problem can be the combination of the solutions of two or more sub-questions. In this problem the matrix cannot be split into two smaller matrices.
+
+The rotate part (while part) can be much more concise.
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        int n = matrix.size();
+        if(n<=1){return;}
+        int tmp;
+        for(int i = 0; i < (n-1)/2+1; i ++) {
+            for(int j = i; j <n-1-i; j++) {
+                tmp = matrix[i][j];
+                matrix[i][j] = matrix[n-1-j][i];
+                matrix[n-1-j][i] = matrix[n-1-i][n-1-j];
+                matrix[n-1-i][n-1-j] = matrix[j][n-1-i];
+                matrix[j][n-1-i] = tmp;
+            }
+        }
+        
+        return;
+    }
+};
+
+5.Discussion
+
+
