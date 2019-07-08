@@ -1,0 +1,59 @@
+1. Description
+Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
+Example:
+
+Input:
+[
+ [ 1, 2, 3 ],
+ [ 4, 5, 6 ],
+ [ 7, 8, 9 ]
+]
+Output: [1,2,3,6,9,8,7,4,5]
+
+2. Instant Reaction
+
+easy
+
+3. First Accepted
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        vector<int> res;
+        int m = matrix.size();
+        if(m<=0){return {};}
+        int n = matrix[0].size();
+        if(n<=0){return {};}
+
+        int i=0, j=0;
+        int index = 0;
+        while((m-i*2)>1&&(n-j*2)>1){
+            for(int k = j; k<n-j-1; k++){
+                res.push_back(matrix[i][k]);
+            }
+            for(int k = i; k<m-i-1; k++){
+                res.push_back(matrix[k][n-j-1]);
+            }
+            for(int k = n-j-1; k>j; k--){
+                res.push_back(matrix[m-i-1][k]);
+            }
+            for(int k = m-i-1; k>i; k--){
+                res.push_back(matrix[k][j]);
+            }
+            i++;
+            j++;
+        }
+        if((m-i*2)==1){
+            for(int k = j; k<n-j; k++){
+                res.push_back(matrix[i][k]);
+            }
+        }
+        else if((n-j*2)==1){
+            for(int k = i; k<m-i; k++){
+                res.push_back(matrix[k][n-j-1]);
+            }
+        }
+        return res;
+    }
+};
+
+4. Revision
