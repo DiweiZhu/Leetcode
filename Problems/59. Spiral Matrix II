@@ -1,0 +1,60 @@
+1. Description
+
+Given a positive integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.
+Example:
+
+Input: 3
+Output:
+[
+ [ 1, 2, 3 ],
+ [ 8, 9, 4 ],
+ [ 7, 6, 5 ]
+]
+
+2. Instant Reaction
+
+Create a matrix with required size.
+Scan through the matrix in the reuiqred order, as in the problem Spiral Matrix, assign the value.
+
+3. First Accepted
+
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        if(n==0){return {};}
+        vector<vector<int>> res;
+        res.resize(n);
+        for(int i = 0; i < n; i ++) {
+            res[i].resize(n);
+        }
+        
+        int i=0, j=0;
+        int m = n;
+        int count = 1;
+        while((m-i*2)>1&&(n-j*2)>1){
+            for(int k = j; k<n-j-1; k++){
+                res[i][k] = count;
+                count ++;
+            }
+            for(int k = i; k<m-i-1; k++){
+                res[k][n-j-1] = count;
+                count ++;
+            }
+            for(int k = n-j-1; k>j; k--){
+                res[m-i-1][k] = count;
+                count ++;
+            }
+            for(int k = m-i-1; k>i; k--){
+                res[k][j] = count;
+                count ++;
+            }
+            i++;
+            j++;
+        }
+        if((m-i*2)==1){
+            res[i][j] = count;
+        }
+        return res;
+    }
+};
+
