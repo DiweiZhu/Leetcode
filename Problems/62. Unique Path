@@ -1,0 +1,65 @@
+1. Description
+
+A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
+
+The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below).
+
+How many possible unique paths are there?
+
+2. Instant Reaction
+
+Combination.
+
+3. First Accepted
+class Solution {
+public:
+    int uniquePaths(int m, int n) {
+        int total = m+n-2;
+        long res = 1;
+        int count = min(m,n);
+        for(int i = count - 1; i >= 1; i --) {
+            res *= total;
+            total --;
+        }
+        return res/factorial(count - 1);
+    }
+private:
+    long factorial(int m) {
+        long res = 1;
+        for(int i = 1; i <= m; i++) {
+            res *= i;
+        }
+        return res;
+    }
+};
+
+4. Revision
+
+5. Discussion
+
+The integer types in C++:
+
+int type has 16 digits, representing digital number ranging from 0 to 65535.
+
+If use (int) to violently transfer a long type larger than 65535 to int, the value would be changed.
+
+C++ can automately transfer the integer types without changing the value. For example, the function int uniquePaths here can return a long type value.
+
+Can also use Dynamic Programming Top-Down. Dynamic Programming Down-Top is more complicated but should be possible.
+
+Interesting:
+
+class Solution {
+    public int uniquePaths(int m, int n) {
+        int[] curr = new int[n];
+        Arrays.fill(curr, 1);
+        for (int i = 1; i < m;i++) {
+            for (int j = 1; j < n; j++) {
+                curr[j] += curr[j-1];
+            }
+        }
+        return curr[n-1];
+    }
+}
+
+The number of the possible paths to a location is the sum of the numbers of the possbile paths to the location above it and to the location left of it.
