@@ -1,0 +1,46 @@
+1. Description
+Given an array of non-negative integers, you are initially positioned at the first index of the array.
+
+Each element in the array represents your maximum jump length at that position.
+
+Determine if you are able to reach the last index.
+
+return TRUE or FALSE.
+
+2. Instant Reaction
+
+Easy. Start from the last second one and check if it can reach the last one. 
+However, there are many problems. Small ones like how to deal with one-element array, how to deal with zero. The most important problem is that there can be zeros as long as they can be jumped over.
+
+3. First Accepted
+
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        int n = nums.size();
+        if(n<=1){return true;}
+        bool res = false;
+        vector<bool> status;
+        status.resize(n);
+        int j;
+        for(j = n-2; j >= 0; j --) {
+            if(nums[j] >= n-1-j){break;}
+        }
+        for(int i = j; i >= 0; i --) {
+            status[i] = false;
+            if(nums[i]>=n-1-i){status[i] = true;}
+            else{
+                for(int k = i; k <= i+nums[i]; k++){
+                    if(status[k]==true){status[i] = true;}
+                }
+            }
+        }
+        return status[0];
+    }
+};
+
+4. Revision
+
+5. Discussion
+
+Backtracking, Dynamic programming, Greedy.
