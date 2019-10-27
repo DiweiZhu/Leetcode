@@ -18,16 +18,28 @@ Explaination about point 2
 
 Details
 ------------------------
-  c_rm: the index of the char which reaches the right most location;
-  rm: the right most location;
-  l: the left boundary of the c_rm, l = 2\*c_rm - rm;
-  R: the vector of the radius of each location;
-  i: current location.
+  c_rm: the index of the char which reaches the right most location
+  
+  rm: the right most location
+  
+  l: the left boundary of the c_rm, l = 2\*c_rm - rm
+  
+  R: the vector of the radius of each location
+  
+  i: current location
+  
+  1. insert the '#'
+  
+  2. Scan the string sequentially
+  
+  3. For each i:
+  
+      a. find R\[2\*c_rm - i\], initialize R\[i\] as min\(R\[2\*c_rm - i\], rm - i\)
+  
+      b. Expand current substring as far as possible
+      
+      c. If i + R\[i\] > rm, update rm and c_rm
 
-
-  First of all insert the '#';
-  Scan the string sequentially;
-  Record c_rm and rm;
-  For each index, 
+  Careful about the boundaries.
 
 
