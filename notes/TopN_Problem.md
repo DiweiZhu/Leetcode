@@ -15,6 +15,7 @@ Explaination about point 2
   
   Then, for the current index i, it is always at the right of the c_rm, we can try to find the symmetric location, i_sym, with respect to c_rm, and the radius of i_sym can help determine the radius of i.
   
+  When rm - i > R\[2\*c_rm-i\], R\[i\]=R\[2\*c_rm-i\]. Otherwise, we may need to change the rm.
 
 Details
 ------------------------
