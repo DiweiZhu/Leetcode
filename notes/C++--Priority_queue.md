@@ -1,2 +1,2 @@
-Manacher's algorithm
+Priority_queue
 ======================
