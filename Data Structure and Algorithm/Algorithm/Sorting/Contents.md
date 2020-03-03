@@ -1,6 +1,6 @@
 #O(n^2)
 
--Insertion sort\\
+-Insertion sort\
 -Selection sort\\
 -Bubble sort\\
 -Shell sort\\
