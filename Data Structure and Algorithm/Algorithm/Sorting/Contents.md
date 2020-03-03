@@ -1,4 +1,4 @@
-#O(n^2)
+##O(n^2)
 
 -Insertion sort\
 -Selection sort\
