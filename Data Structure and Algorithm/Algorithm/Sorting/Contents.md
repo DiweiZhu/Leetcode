@@ -3,16 +3,16 @@
 -Insertion sort\
 -Selection sort\
 -Bubble sort\
--Shell sort\
+-Shell sort
 
 #O(nlogn)
 
 -Merge sort\
 -Quick sort\
--Heap sort\
+-Heap sort
 
 #O(n)
 
 -Redix sort\
 -Counting sort\
--Bucket sort\
+-Bucket sort
