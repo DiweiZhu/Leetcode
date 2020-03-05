@@ -1,17 +1,18 @@
 '''
-void radixsort(vector<int>& r, int pos, int max){
+    void radixsort(vector<int>& r, int pos, int max){
     
-    int digit = 1;
+        int digit = 1;
 
-    while (max > 0){
-        r = radix(r, l, pos, digit);
-        digit *= 10;
-        max /= 10;
+        while (max > 0){
+            r = radix(r, l, pos, digit);
+            digit *= 10;
+            max /= 10;
+        }
+
+        return;
     }
-
-    return;
-}
-
+'''
+'''
 vector<int> radix(vector<int>& cur, int l, int pos, int digit){
         
     vector<vector<int>> sorted(10, vector<int>{});
