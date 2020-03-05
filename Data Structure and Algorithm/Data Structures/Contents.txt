@@ -1,0 +1,7 @@
+-stack
+-queue
+-array
+-linked list
+-tree
+-hash tale
+-graph
