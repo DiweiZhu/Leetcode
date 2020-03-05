@@ -1,0 +1,2 @@
+-Select the maximum or/and minimum in an array
+-Select the ith smallest item in an array
