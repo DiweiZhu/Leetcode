@@ -1,18 +1,21 @@
-#O(n^2)
+O(n^2)
+---------
 
--Insertion sort
--Selection sort
--Bubble sort
+-Insertion sort\
+-Selection sort\
+-Bubble sort\
 -Shell sort
 
-#O(nlogn)
+O(nlogn)
+---------
 
--Merge sort
--Quick sort
+-Merge sort\
+-Quick sort\
 -Heap sort
 
-#O(n)
+O(n)
+---------
 
--Redix sort
--Counting sort
+-Redix sort\
+-Counting sort\
 -Bucket sort
