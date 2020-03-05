@@ -1,7 +1,7 @@
--stack
--queue
--array
--linked list
--tree
--hash tale
--graph
+-stack\
+-queue\
+-array\
+-linked list\
+-tree\
+-hash tale\
+-graph\
