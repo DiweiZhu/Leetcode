@@ -1,4 +1,5 @@
 '''
+    
     void radixsort(vector<int>& r, int pos, int max){
     
         int digit = 1;
@@ -13,21 +14,22 @@
     }
 '''
 '''
-vector<int> radix(vector<int>& cur, int l, int pos, int digit){
+
+    vector<int> radix(vector<int>& cur, int l, int pos, int digit){
         
-    vector<vector<int>> sorted(10, vector<int>{});
+        vector<vector<int>> sorted(10, vector<int>{});
 
-    for (auto r : cur){
-        sorted[r[pos] / digit % 10].push_back(r);
-    }
-
-    vector<int> res;
-    for (int i = 0; i < 10; i ++){
-        auto bucket = sorted[i];
-        for (auto r : bucket){
-            res.push_back(r);
+        for (auto r : cur){
+            sorted[r[pos] / digit % 10].push_back(r);
         }
+
+        vector<int> res;
+        for (int i = 0; i < 10; i ++){
+            auto bucket = sorted[i];
+            for (auto r : bucket){
+                res.push_back(r);
+            }
+        }
+        return res;
     }
-    return res;
-}
 '''
