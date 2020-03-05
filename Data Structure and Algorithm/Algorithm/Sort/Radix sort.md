@@ -1,5 +1,4 @@
-'''
-    
+
     void radixsort(vector<int>& r, int pos, int max){
     
         int digit = 1;
@@ -12,8 +11,6 @@
 
         return;
     }
-'''
-'''
 
     vector<int> radix(vector<int>& cur, int l, int pos, int digit){
         
@@ -32,4 +29,4 @@
         }
         return res;
     }
-'''
+
