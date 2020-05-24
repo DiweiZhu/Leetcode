@@ -1,0 +1,8 @@
+Another two pointer method.
+
+Fix the slow pointer, move the faster pointer, recording the distance between them.
+If the distance reaches the current upper bound, double the upper bound, move the slow pointer to the fast pointer. The upper bound is initialized as 1.
+If the two pointers meet, the cycle is found, the current distance between the pointers is the length of the cycle.
+To find the entrance of the cycle, put slow point to the head and put fast point a cycle length away from the slow pointer. Move them one step a time until they meet.
+
+

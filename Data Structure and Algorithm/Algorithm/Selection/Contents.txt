@@ -1,2 +1,7 @@
 -Select the maximum or/and minimum in an array
 -Select the ith smallest item in an array
+
+-ith Order statistics: the ith smallest number of a sequence
+
+-Randomized select: like quick sort
+-Quick select (Hoare's selection algorithm)

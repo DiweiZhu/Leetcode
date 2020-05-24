@@ -1,0 +1,10 @@
+To find the majority of a sequence of elements.
+TC: O(n)
+SC: O(1)
+
+The majority element of a sequence is the element that appears more than floor(n/2) times.
+
+Starting from the beginning of the sequence, take the first element as the majority element.
+Iterate through the sequence, count the number of the "majority element" and the "non-majority element".
+When the two counts are equal, drop the whole suffix subsequence, start from the next element again.
+When reaching the end of the sequence, the current "majority element" would be the real majority element.

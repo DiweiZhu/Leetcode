@@ -1,0 +1,6 @@
+Two step:
+1. Fast-slow pointer, to find the index where tortoise and hare meets.
+
+2. Find the entrance of the cycle.
+
+ FROM WIKIPEDIA: After step 1 the tortoise position, ν, which is also equal to the distance between hare and tortoise, is divisible by the period λ. So hare moving in circle one step at a time, and tortoise (reset to x0) moving towards the circle, will intersect at the beginning of the circle. Because the distance between them is constant at 2ν, a multiple of λ, they will agree as soon as the tortoise reaches index μ.

@@ -1,0 +1,3 @@
+-Floyd's Tortoise and Hare
+-Brent's algorithm
+-Gosper's algorithm

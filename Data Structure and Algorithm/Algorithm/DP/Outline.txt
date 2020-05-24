@@ -1,0 +1,11 @@
+https://blog.csdn.net/eagle_or_snail/article/details/50987044
+- 简单基础DP
+-- 递推
+--- 计数递推
+
+- 区间DP
+- 树形DP
+- 数位DP
+- 概率（期望）DP
+- 状态压缩 DP
+- 数据结构优化的DP

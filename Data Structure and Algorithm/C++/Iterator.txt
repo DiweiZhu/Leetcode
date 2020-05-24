@@ -1,0 +1,20 @@
+Iterator 迭代器
+
+1. 什么是迭代器
+在stl中，迭代器使得算法独立于使用的容器类型，对应模板使得算法独立于使用的数据类型。
+对所有容器来说，迭代器是用于遍历容器中的值的通用表示。
+
+2. 迭代器的基本特征
+a. 能对迭代器进行解引用
+b. 能将一个迭代器赋值给另一个， 即p=q
+c. 能比较两个迭代器是否相等， 即p==q
+d. 能使用迭代器遍历容器中的所有元素，即可以使用p++
+e. stl中每个容器都定义了超尾(off-the-end)标记，而每个迭代器都有end()方法返回超尾的位置
+除此之外，STL按功能的强弱定义了多种级别的迭代器
+
+3. STL中的迭代器类型
+输入迭代器 Input Iterator
+输出迭代器 Output Iterator
+正向迭代器 Forward Iterator
+双向迭代器 Bidirectional Iterator
+随机访问迭代器 Random Access Iterator

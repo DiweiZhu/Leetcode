@@ -1,0 +1,7 @@
+average O(N)
+
+To pick the kth largest element in an array.
+
+1. choose a pivot
+2. partition
+3. check position

@@ -4,4 +4,6 @@
 -linked list\
 -tree\
 -hash tale\
--graph
+-graph\
+
+-Time Complexity of the Basic Operations of Primitive Data Structures
