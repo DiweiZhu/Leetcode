@@ -3,21 +3,21 @@ Description
 * Given data:
 * Target: 
 * Restraint: 
-* Other: 
+* Others: 
 
 Related Topics
 ================
 * 
 
-Abstraction
+Discussion
 ================
 
-My Code
+Final Code
 ================
 
 ```md
 
 ```
 
-Similar Problems
+Related Problems
 ===============
